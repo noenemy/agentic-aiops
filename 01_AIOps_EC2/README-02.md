@@ -37,7 +37,7 @@ Amazon Q CLI 사용 시작: q login
 
 ### 3. Q Dev CLI 를 실행한후 아래와 같이 분석을 요청합니다.
 ```
-ap-northeast-2 리전에 q-test-cpu50 이름을 가진 인스턴스의 CPU 사용상태를 확인하고 원인을 찾고 싶어
+us-east-1 리전에 q-test-cpu50 이름을 가진 인스턴스의 CPU 사용상태를 확인하고 원인을 찾고 싶어
 ```
 
 ### 4. 아마도, CloudWatch 와 SSM Agent 를 통하여 확인된 결과를 , 제공하려는 모습을 볼 수 있을 것입니다.
