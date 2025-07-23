@@ -1,15 +1,3 @@
-# * 기본 환경
-  1. 웹 브라우저에서 Amazon Q Business 콘솔 페이지를 엽니다.
-  2. 이 실습은 us-west-2 (Oregon) 리전을 사용하므로 리전 정보가 올바르게 설정되어 있는지 확인하시기 바랍니다.
-
-  [Amazon Q Business 콘솔(us-west-2)](https://us-west-2.console.aws.amazon.com/amazonq/business/applications?region=us-west-2)
-
-  3. Amazon Q Business 콘솔에서 **Get Started** 를 클릭합니다.
-  ![alt text](images/q-01.png)
-
-
-
-
 # 실습 1. AIOps for EC2 상태분석 (상태실패)
 
 이 과정은 Q CLI 를 이용하여 인스턴스의 상태를 분석하고 복구하는 과정을 시도합니다. 
