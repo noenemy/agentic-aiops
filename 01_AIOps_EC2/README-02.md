@@ -36,7 +36,7 @@ Amazon Q CLI 사용 시작: q login
 
 2. Q Dev CLI 를 실행한후 아래와 같이 분석을 요청합니다.
 ```
-ap-northeast-2 리전에 <인스턴스ID> 인스턴스의 CPU 사용상태를 확인하고 원인을 찾고 싶어
+ap-northeast-2 리전에 q-test-cpu50 이름을 가진 인스턴스의 CPU 사용상태를 확인하고 원인을 찾고 싶어
 ```
 
 3. 아마도, CloudWatch 와 SSM Agent 를 통하여 확인된 결과를 , 제공하려는 모습을 볼 수 있을 것입니다.
@@ -45,7 +45,7 @@ ap-northeast-2 리전에 <인스턴스ID> 인스턴스의 CPU 사용상태를 �
 
 그외 - 5. Q Dev CLI 를 실행한후, SSH 키가 있음을 알려 줍니다.
 ```
-현재 디렉토리의 pem 키를 사용해서 <인스턴스ID> 에 ssh 접근이 가능한지 테스트 해줘
+현재 디렉토리의 q-test-cpu50-key.pem 키를 사용해서 q-test-cpu50 에 ssh 접근이 가능한지 테스트 해줘
 ```
 그외 - 6. SSH 를 통해서 분석 시도를 지시해 보세요. 
 ```
