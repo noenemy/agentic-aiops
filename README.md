@@ -1,6 +1,6 @@
-## Agentic AIOps Workshop
+## AIOps with Amazon Q Developer CLI
 
-이 실습에서는 AWS Q Developer CLI와 MCP를 이용한 Agentic AIOps에 대해서 예제를 통해서 알아보겠습니다.
+이 실습에서는 Amazon Q Developer CLI와 MCP를 이용한 Agentic AIOps를 사용하는 방법을 예제를 통해서 알아보겠습니다.
 
 다음 실습 내용을 포함합니다. 
 
