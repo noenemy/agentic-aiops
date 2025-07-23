@@ -14,7 +14,7 @@ cd ./agentic-aiops/01_AIOps_EC2
 
 sh ./create-ec2-q-cli-bootfail.sh q-test-cpu50
 ```
-완료되면 아래 예시처럼 나옵니다. ( 인스턴스 ID 를 복사 기억해 주세요 )
+완료되면 아래 예시처럼 나옵니다. ( <인스턴스 ID> 를 복사 기억해 주세요 )
 ```
 설치 확인 중...
 /home/ec2-user/.local/bin/q
@@ -25,7 +25,7 @@ CPU 사용률: 54.5%
 
 ===== 설치 완료 =====
 인스턴스 이름: q-test-cpu50
-인스턴스 ID: i-04735786f71fa06ed          <============= 출력 결과의 해당 부분 
+인스턴스 ID: i-XXXXXXXXXXXX          <============= 출력 결과의 해당 <인스턴스 ID> 부분 
 인스턴스 IP: 100.27.17.98
 IAM 역할: q-test-cpu50-admin-role
 인스턴스 프로파일: q-test-cpu50-admin-profile
