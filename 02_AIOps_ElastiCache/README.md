@@ -11,7 +11,8 @@
 * 첫 요청이기 때문에 리젼 정보, 클러스터 정보 (valkey)를 자세히 기록합니다.
 
 ```
-us-east-1 리젼에 있는 test-valkey-cluster valkey 클러스터의 최근 3일간 cpu, memory, network 사용량 분석해줘.
+us-east-1 리젼에 있는 ElastiCache valkey 클러스터 'test-valkey-cluster'의 최근 3일간 cpu, memory, network 사용량 분석해줘.
+해당 클러스터는 클러스터 모드 활성화로 구성돼있어.
 ```
 
 데이터를 기반으로 Right-Sizing 가이드를 요청합니다.
@@ -65,5 +66,5 @@ output
 * 삭제의 경우 오동작 방지를 위해 리젼 정보와 클러스터 정보를 명확히 제시합니다.
 
 ```
-us-east-1 리젼에 있는 test-valkey-cluster valkey 클러스터를 삭제해줘
+us-east-1 리젼에 있는 ElastiCache valkey 클러스터 'test-valkey-cluster'를 삭제해줘
 ```
