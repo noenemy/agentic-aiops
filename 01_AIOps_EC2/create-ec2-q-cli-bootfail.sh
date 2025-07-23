@@ -16,9 +16,9 @@ fi
 # 변수 설정
 INSTANCE_NAME="$1"
 KEY_NAME="${INSTANCE_NAME}-key"
-REGION="ap-northeast-2"
+REGION="us-east-1"
 INSTANCE_TYPE="t3.micro"
-AMI_ID="ami-0d11a7e87f0072fa7"
+AMI_ID="ami-0953476d60561c955"
 SG_NAME="${INSTANCE_NAME}-sg"
 IAM_ROLE_NAME="${INSTANCE_NAME}-admin-role"
 INSTANCE_PROFILE_NAME="${INSTANCE_NAME}-admin-profile"
