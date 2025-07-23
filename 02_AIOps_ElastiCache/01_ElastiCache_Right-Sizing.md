@@ -45,19 +45,3 @@ us-east-1 리젼에 있는 ElastiCache valkey 클러스터 'test-valkey-cluster'
 ```
 작업이 잘 예약됐는지 확인해줘.
 ```
-
-(Option) 위 결과를 명령으로 재 검증합니다.
-
-```
-aws elasticache describe-cache-clusters --cache-cluster-id test-valkey-cluster-0001-001 \
---region us-east-1 \
---query "CacheClusters[].PendingModifiedValues"
-```
-output
-```json
-[
-    {
-        "CacheNodeType": "cache.t3.medium"
-    }
-]
-```
