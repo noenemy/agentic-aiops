@@ -8,7 +8,7 @@
 
 ### 1. [ec2-user] Shell 에서 , CPU 부하가 발생하는 인스턴스를 생성합니다.
 ```
-mkdir test2 && cd test2
+mkdir ~/test2 && cd ~/test2
 git clone https://github.com/noenemy/agentic-aiops.git
 cd ./agentic-aiops/01_AIOps_EC2
 
