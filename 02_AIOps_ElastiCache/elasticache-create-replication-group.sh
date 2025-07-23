@@ -11,4 +11,4 @@ aws elasticache create-replication-group --replication-group-id test-valkey-clus
 --at-rest-encryption-enabled \
 --num-node-groups 2 \
 --replicas-per-node-group 2 \
---region ap-northeast-2
+--region us-east-1
