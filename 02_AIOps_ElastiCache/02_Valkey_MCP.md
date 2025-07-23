@@ -40,7 +40,7 @@ Amazon Q dev CLI에 다시 접근합니다.
 q chat
 ```
 
-![mcp.img](./mcp.png)
+![mcp.img](./imgs/mcp.png)
 
 Amazon Q dev CLI 내부에서 요청을 진행합니다.
 ```
