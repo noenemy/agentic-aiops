@@ -12,7 +12,7 @@ mkdir test2 && cd test2
 git clone https://github.com/noenemy/agentic-aiops.git
 cd ./agentic-aiops/01_AIOps_EC2
 
-sh ./create-ec2-q-cli-bootfail.sh q-test-cpu50
+sh ./create-ec2-q-cli-cpu50.sh q-test-cpu50
 ```
 2. (예시결과) 완료되면 아래 예시처럼 나옵니다. ( <인스턴스 ID> 를 복사 기억해 주세요 )
 ```
