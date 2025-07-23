@@ -113,8 +113,13 @@ cat > /home/ec2-user/cpu_stress.sh << 'INNEREOF'
 #!/bin/bash
 # CPU 50% 부하 스크립트
 CPU_CORES=$(nproc)
-# CPU 코어당 50% 부하를 위해 stress-ng 실행
-stress-ng --cpu $CPU_CORES --cpu-load 50 --timeout 0 &
+# stress-ng가 설치되어 있는지 확인
+if ! command -v stress-ng &> /dev/null; then
+    echo "stress-ng is not installed. Installing..."
+    sudo dnf install -y stress-ng
+fi
+# CPU 코어당 50% 부하를 위해 stress-ng 실행 (백그라운드 실행 제거)
+exec stress-ng --cpu $CPU_CORES --cpu-load 50 --timeout 0
 INNEREOF
 
 # 스크립트 실행 권한 부여
@@ -130,7 +135,10 @@ After=network.target
 Type=simple
 User=root
 ExecStart=/home/ec2-user/cpu_stress.sh
-Restart=always
+Restart=on-failure
+RestartSec=10s
+StartLimitBurst=5
+StartLimitIntervalSec=60s
 
 [Install]
 WantedBy=multi-user.target
