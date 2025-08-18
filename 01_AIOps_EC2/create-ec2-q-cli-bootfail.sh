@@ -55,11 +55,7 @@ echo "현재 IP에서 SSH 접근 허용 중..."
 MY_IP=$(curl -s https://checkip.amazonaws.com)
 aws ec2 authorize-security-group-ingress --group-id $SG_ID --ip-permissions "[{\"IpProtocol\": \"tcp\", \"FromPort\": 22, \"ToPort\": 22, \"IpRanges\": [{\"CidrIp\": \"$MY_IP/32\", \"Description\": \"Allow SSH access from current IP\"}]}]" --region $REGION
 
-# 7. 서브넷 ID 가져오기 (첫 번째 가용 영역의 서브넷 사용)
-SUBNET_ID=$(aws ec2 describe-subnets --filters "Name=vpc-id,Values=$VPC_ID" --query "Subnets[0].SubnetId" --output text --region $REGION)
-echo "서브넷 ID: $SUBNET_ID"
-
-# 8. IAM 역할 및 인스턴스 프로파일 생성
+# 7. IAM 역할 및 인스턴스 프로파일 생성
 echo "IAM 역할 및 인스턴스 프로파일 생성 중..."
 
 # 신뢰 정책 생성
@@ -116,7 +112,6 @@ INSTANCE_ID=$(aws ec2 run-instances \
   --instance-type $INSTANCE_TYPE \
   --key-name $KEY_NAME \
   --security-group-ids $SG_ID \
-  --subnet-id $SUBNET_ID \
   --user-data $USER_DATA \
   --iam-instance-profile "Name=$INSTANCE_PROFILE_NAME" \
   --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$INSTANCE_NAME}]" \
