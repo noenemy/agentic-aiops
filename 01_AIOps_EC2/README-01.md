@@ -2,36 +2,6 @@
 
 ## 이 과정은 Q CLI 를 이용하여 인스턴스의 상태를 분석하고 복구하는 과정을 시도합니다. 
 
-## 1.1 기본 정보 
-
-* 실행하는 환경
-  * EC2 인스턴스 AL2023 OS 에 ec2-user 로 Shell 에 접속한 상태에서 시작합니다.
-  * SSH 접근이 안된는 경우에는 Session Mananger 를 통하여 접근합니다.  
-
-
-### (설명) 스크립트 설명 - Amazon Q CLi 미설치 또는 EC2 가 없는 경우
-
-* 스크립트 설명 ( 해당 스크립트를 실행하려면 AL2023 의 ec2-user 에서 하실 수 있습니다.)
-   * 스크립트1(AL2023) : create-ec2-q-cli-main.sh : 파일은 인스턴스를 생성하고 Q CLI 를 자동 설치합니다. Admin 권한을 가진 인스턴스 프로파일을 연결합니다.
-      * (이미 Q CLI EC2 가 있으신 상태에서는 별도로 사용할 필요는 없습니다.) 
-      * 실행법:
-        ```
-        # 예시) sh ./create-ec2-q-cli-main.sh [Name]
-        ```
-        ```
-        sh ./create-ec2-q-cli-main.sh q-cli-main
-        ```
-  * 스크립트2 : install-ec2-q-cli-main.sh : ec2-user 상태에서 q cli 환경만 설치 합니다.
-     * (이미 Q CLI EC2 가 있으신 상태에서는 별도로 사용할 필요는 없습니다.)  
-     * 실행법(AL2023):
-        ```
-        # 예시-원격) sh ./install-ec2-q-cli-main.sh --remote my-key.pem 52.78.123.456
-        # 예시-로컬) sh ./install-ec2-q-cli-main.sh --local
-
-        ```
-        ```
-        sh ./create-ec2-q-cli-bootfail.sh q-cli-bootfail
-        ```
 
 ### [설명] 스크립트 설명 - Amazon Q CLi 된 EC2 가 있는경우
 
@@ -52,10 +22,11 @@
 
 1. Q CLI 가 있는 환경의 EC2 인스턴스에 EC2-USER 에 SHELL 에 위치한 상태에서 시작 ( 아직 q chat 실행하기 전 상태입니다. )
 
-2. 임시 디렉토리를 생성하고, 필요한 파일을 다운로드 받습니다. 
+2. 임시 디렉토리를 생성하고, 스크립트파일을 다운로드 한후 실행권한을 줍니다.   
 ```
 mkdir ~/test1 && cd ~/test1
-git clone https://github.com/noenemy/agentic-aiops.git 
+curl -O https://raw.githubusercontent.com/noenemy/agentic-aiops/refs/heads/main/01_AIOps_EC2/create-ec2-q-cli-bootfail.sh
+chmod +x create-ec2-q-cli-bootfail.sh
 ```
 
 3. 상태이상이 발생한 인스턴스를 생성합니다. ( 부팅실패 인스턴스 생성 )
