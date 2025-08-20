@@ -1,4 +1,4 @@
-# 실습 AIOps for ElastiCache
+# 실습 AIOps for EC2
 - [사전작업-테스트용 EC2 생성](Create-test-EC2.md)
 ---
 - [실습 1. AIOps for EC2 상태분석 (상태실패)](README-01.md)
