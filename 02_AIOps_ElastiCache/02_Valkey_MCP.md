@@ -1,4 +1,4 @@
-## 2. Valkey MCP 서버 활용해보기
+## 3. Valkey MCP 서버 활용해보기
 
 Amazon Q Dev Cli 에서 나간 후 터미널 환경에서 작업을 진행합니다.
 ```
