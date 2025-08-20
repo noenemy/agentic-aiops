@@ -20,31 +20,7 @@
 
 ## 1.2 진행순서 - 실습
 
-1. Q CLI 가 있는 환경의 EC2 인스턴스에 EC2-USER 에 SHELL 에 위치한 상태에서 시작 ( 아직 q chat 실행하기 전 상태입니다. )
 
-2. 임시 디렉토리를 생성하고, 스크립트파일을 다운로드 한후 실행권한을 줍니다.   
-```
-mkdir ~/test1 && cd ~/test1
-curl -O https://raw.githubusercontent.com/noenemy/agentic-aiops/refs/heads/main/01_AIOps_EC2/create-ec2-q-cli-bootfail.sh
-chmod +x create-ec2-q-cli-bootfail.sh
-```
-
-3. 상태이상이 발생한 인스턴스를 생성합니다. ( 부팅실패 인스턴스 생성 )
-```
-sh ./agentic-aiops/01_AIOps_EC2/create-ec2-q-cli-bootfail.sh q-cli-bootfail
-```
-
-4. 아래와 같은 정보가 나오는 것을 확인합니다. 
-```
-1. EC2 인스턴스 q-bootfail-test-001이 생성되었습니다.
-2. 인스턴스 ID: i-1234567890
-3. 인스턴스 IP: 555.555.555.555
-4. SSH 키: q-cli-bootfail-key.pem
-5. Amazon Q CLI가 성공적으로 설치되었습니다.
-6. initramfs 파일이 백업되었습니다: /boot/initramfs-$(uname -r).img.bak
-7. 시스템이 재부팅되었습니다.
-
-```
 
 5. Q CLI 를 실행하고 다음과 같이 요청합니다. ( 순서대로, 혹은 편한 방법으로 진행합니다. )
 
