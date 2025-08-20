@@ -52,6 +52,86 @@ connection error가 발생한 client는 현재 q chat을 실행중인 해당 인
 
 시나리오
 ```
+'test-valkey-cluster' 클러스터에 연결된 Application에서 MOVED 에러가 증가했습니다.
+Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
+```
+
+환경 구성
+- 샤드 제거를 통해 클러스터 slot migration이 발생하도록 요청합니다.
+```
+'ue-east-1' 리전에 있는 'test-valkey-cluster' valkey 클러스터의 2번 샤드를 제거해줘
+```
+
+분석 진행
+- 기존 요청 내용을 Amazon Q dev CLI가 기억하고 있기에 실제 상황과 유사하게 동작하도록 qchat 세션을 초기화합니다.
+```
+/quit
+```
+
+- 다시 qchat을 실행합니다.
+```
+q chat
+```
+
+- 모든 답변을 한글로 받기 위해 요청합니다.
+```
+내가 요청하는 모든 질문에 한글로 답변해줘. 기술명이나 용어가 영문이 더 자연스러운 경우에만 영문으로 작성해줘.
+```
+
+- 최근 30분 이내에 클러스터에 연결된 Appliation에서 MOVED에러가 증가한 원인 조사를 요청합니다.
+```
+최근 30분 이내에 'ue-east-1' 리전에 있는 'test-valkey-cluster' valkey 클러스터에 연결된 Application에서 MOVED에러가 증가했어.
+MOVED에러가 증가한 원인이 될만한 작업이 진행됐는지 확인해줘. 사용자가 요청한 작업이 있는지 같이 확인해줘.
+```
+
+- 조사한 내용을 종합하여 보고 형태로 정리를 요청합니다.
+```
+조사한 내용을 토대로 장애보고서를 작성해야해. 내용을 정리해줘.
+```
+
+### 3) case #3
+시나리오
+```
+'test-valkey-cluster' 클러스터에 연결된 Application에서 command timeout / connection timeout 에러가 발생하고 전체적인 명령의 latency가 증가했습니다.
+Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
+```
+
+환경 구성
+- 로컬 환경에 긴 시간 cluster의 cpu를 점유하는 long-running command 수행하는 명령 작성을 요청합니다.
+```
+valkey에서 3초 이상의 EVAL 요청을 수행하는 lua script를 /tmp/long-running-3s.lua 파일에 작성해줘.
+```
+
+- valkey-cli 를 사용하기 위해 valkey 패키지를 설치합니다.
+```
+valkey 패키지를 설치해줘.
+```
+
+- script를 실행하여 장애 상황을 재현합니다.
+```
+valkey-cli -h <endpoint> -p 6379 -c --eval 형식으로 작성한 long-running-3s.lua를 10번 실행해줘. endpoint는 'us-east-1' 리전에 있는 'test-valkey-cluster' valkey 클러스터의 configuration endpoint를 사용해줘.
+```
+
+분석 진행
+- 기존 primary failover 요청한 내용을 Amazon Q dev CLI가 기억하고 있기에 실제 상황과 유사하게 동작하도록 qchat 세션을 초기화합니다.
+```
+/quit
+```
+
+- 다시 qchat을 실행합니다.
+```
+q chat
+```
+
+- 모든 답변을 한글로 받기 위해 요청합니다.
+```
+내가 요청하는 모든 질문에 한글로 답변해줘. 기술명이나 용어가 영문이 더 자연스러운 경우에만 영문으로 작성해줘.
+```
+
+### 4) case #4
+
+시나리오
+```
 'test-valkey-cluster' 클러스터에 연결된 Application에서 command timeout / connection timeout 에러가 발생하고 전체적인 명령의 latency가 증가했습니다.
 Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
 ```
@@ -101,7 +181,7 @@ cloudwatch 지표와, valkey-cli를 사용해서 클러스터 내부 지표, slo
 조사한 내용을 토대로 장애보고서를 작성해야해. 내용을 정리해줘.
 ```
 
-### 3) case #3
+### 3) case #4
 
 시나리오
 ```
@@ -109,14 +189,14 @@ cloudwatch 지표와, valkey-cli를 사용해서 클러스터 내부 지표, slo
 hashes
 ```
 
-### 4) case #4
+### 5) case #5
 
 시나리오
 ```
 'test-valkey-cluster' 클러스터 max connection 초과
 ```
 
-### 5) case #5
+### 6) case #6
 
 시나리오
 ```
