@@ -4,10 +4,9 @@
 
 ## 1) Case #1
 
-```
-'test-valkey-cluster' 클러스터에 연결된 Application에서 예기치 않은 connection error 문제가 발생했습니다.
+📢 'test-valkey-cluster' 클러스터에 연결된 Application에서 예기치 않은 connection error 문제가 발생했습니다.
+
 Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
-```
 
 ### 1-1) 환경 구성
 - primary failover를 수동으로 진행하여 강제 노드 교체를 진행합니다.
@@ -49,10 +48,9 @@ connection error가 발생한 client는 현재 q chat을 실행중인 해당 인
 
 ## 2) Case #2
 
-```
-'test-valkey-cluster' 클러스터에 연결된 Application에서 MOVED 에러가 증가했습니다.
+📢 'test-valkey-cluster' 클러스터에 연결된 Application에서 MOVED 에러가 증가했습니다.
+
 Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
-```
 
 ### 2-1) 환경 구성
 - 샤드 제거를 통해 클러스터 slot migration이 발생하도록 요청합니다.
@@ -89,13 +87,13 @@ MOVED에러가 증가한 원인이 될만한 작업이 진행됐는지 확인해
 
 ## 3) Case #3
 
-```
-Application에서 'test-valkey-cluster' 클러스터에 연결할 수 없습니다. 설정이 잘못된 것 같은데 어떤 설정이 잘못됐는지 확인이 어렵습니다. SSL_connect failed: record layer failure 에러가 발생하고 있습니다.
+📢 Application에서 'test-valkey-cluster' 클러스터에 연결할 수 없습니다. 설정이 잘못된 것 같은데 어떤 설정이 잘못됐는지 확인이 어렵습니다.
+
+SSL_connect failed: record layer failure 에러가 발생하고 있는 상황입니다.
 
 Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
 
 * test-valkey-cluster는 TLS 연결이 비활성화된 상태로, TLS 연결을 시도했을 때 에러가 발생합니다.
-```
 
 ### 3-1) 환경 구성
 - 로컬 환경에 tls 활성화로 valkey 클러스터에 연결하는 python 클라이언트 프로그램 작성을 요청합니다.
@@ -126,10 +124,9 @@ q chat
 
 ## 4) Case #4
 
-```
-'test-valkey-cluster' 클러스터에 연결된 Application에서 command timeout / connection timeout 에러가 발생하고 전체적인 명령의 latency가 증가했습니다.
+📢 'test-valkey-cluster' 클러스터에 연결된 Application에서 command timeout / connection timeout 에러가 발생하고 전체적인 명령의 latency가 증가했습니다.
+
 Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
-```
 
 ### 4-1) 환경 구성
 - 로컬 환경에 긴 시간 cluster의 cpu를 점유하는 long-running command 수행하는 명령 작성을 요청합니다.
@@ -176,14 +173,13 @@ cloudwatch 지표와, valkey-cli를 사용해서 클러스터 내부 지표, slo
 조사한 내용을 토대로 장애보고서를 작성해야해. 내용을 정리해줘.
 ```
 
-## 5) case #5
+## 5) Case #5
 
-```
-'test-valkey-cluster' 클러스터에 연결된 Application에서 command timeout / connection timeout 에러가 발생하고 전체적인 명령의 latency가 증가했습니다.
+📢 'test-valkey-cluster' 클러스터에 연결된 Application에서 command timeout / connection timeout 에러가 발생하고 전체적인 명령의 latency가 증가했습니다.
+
 Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
 
-시나리오 #2와 유사하지만 노드 failover를 의도적으로 발생시켜 노드 내부의 slowlog가 없어 근거 자료가 부족한 상태에서도 원인 분석을 진행할 수 있는지 확인합니다.
-```
+case #2와 유사하지만 노드 failover를 의도적으로 발생시켜 노드 내부의 slowlog가 없어 근거 자료가 부족한 상태에서도 원인 분석을 진행할 수 있는지 확인합니다.
 
 ### 5-1) 환경 구성
 - 로컬 환경에 긴 시간 cluster의 cpu를 점유하는 long-running command 수행하는 명령 작성을 요청합니다.
