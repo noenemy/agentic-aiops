@@ -1,21 +1,13 @@
 # 실습 1. AIOps for EC2 상태분석 (상태실패)
 
+## 1.1 과정내용 - 설명
+
+> 실습을 진행하시는 도중 Amazon Q dev CLI가 의도하지 않게 동작하는 경우가 발생할 수 있습니다. 그 때에는 안내된 과정 외에도 추가로 요청하시어 목표에 도달할 수 있도록 직접 요청을 수행해보시기 바랍니다.
+
 ## 이 과정은 Q CLI 를 이용하여 인스턴스의 상태를 분석하고 복구하는 과정을 시도합니다. 
+📢 'test-valkey-cluster' 클러스터에 연결된 Application에서 예기치 않은 connection error 문제가 발생했습니다.
 
-
-### [설명] 스크립트 설명 - Amazon Q CLi 된 EC2 가 있는경우
-
-   * 스크립트3(AL2023) : create-ec2-q-cli-bootfail.sh : 인스턴스를 생성하고 부팅 실패상태가 되도록 만듭니다.
-     * 실행법:
-        ```
-        # 예시) sh ./create-ec2-q-cli-bootfail.sh [Name]
-        ```
-        ```
-        sh ./create-ec2-q-cli-bootfail.sh q-cli-bootfail
-        ```
-
-### [준비] Shell 에 EC2-USER 로 접속된 상태에서 준비해 주세요.
-
+Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
 
 
 ## 1.2 진행순서 - 실습
