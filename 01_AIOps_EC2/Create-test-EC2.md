@@ -7,7 +7,7 @@
 
 1-1. 실행해야 하는 명령어
 ```
-mkdir ~/test1 && cd ~/test1
+mkdir ~/test1; cd ~/test1
 curl -O https://raw.githubusercontent.com/noenemy/agentic-aiops/refs/heads/main/01_AIOps_EC2/create-ec2-q-cli-bootfail.sh
 sh ./agentic-aiops/01_AIOps_EC2/create-ec2-q-cli-bootfail.sh bootfail-01
 ```
@@ -28,7 +28,7 @@ sh ./agentic-aiops/01_AIOps_EC2/create-ec2-q-cli-bootfail.sh bootfail-01
 
 2-1. 실행해야 하는 명령어
 ```
-mkdir ~/test2 && cd ~/test2
+mkdir ~/test1; cd ~/test1
 curl -O https://raw.githubusercontent.com/noenemy/agentic-aiops/refs/heads/main/01_AIOps_EC2/create-ec2-q-cli-cpu50.sh
 sh ./create-ec2-q-cli-cpu50.sh high-cpu-01
 ```
