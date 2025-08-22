@@ -9,7 +9,7 @@
 ```
 mkdir ~/test1; cd ~/test1
 curl -O https://raw.githubusercontent.com/noenemy/agentic-aiops/refs/heads/main/01_AIOps_EC2/create-ec2-q-cli-bootfail.sh
-sh ./agentic-aiops/01_AIOps_EC2/create-ec2-q-cli-bootfail.sh bootfail-01
+sh ./create-ec2-q-cli-bootfail.sh bootfail-01
 ```
 
 1-2. 명령어 완료후 결과(예시) 
