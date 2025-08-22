@@ -41,7 +41,7 @@ aws 명령줄용 Amazon Q는 컨텍스트 정보를 통합하여 Amazon Q에 사
 
 9. 해당 Instance의 쉘 커맨드 화면에 접속하였습니다.
 
-# ElastiCache 실습 환경 만들기  
+# EC2 / ElastiCache 실습 환경 구성
 
 아래 AWS CLI 커맨드를 실행해서 ElastiCache 클러스터를 생성합니다.
 
@@ -56,6 +56,54 @@ aws elasticache create-replication-group --replication-group-id test-valkey-clus
 --num-node-groups 2 \
 --replicas-per-node-group 2 \
 --region us-east-1
+```
+
+아래 커맨드를 실행해서 실습에 필요한 EC2 인스턴스를 구성합니다.
+
+```
+mkdir ~/test1; cd ~/test1
+curl -O https://raw.githubusercontent.com/noenemy/agentic-aiops/refs/heads/main/01_AIOps_EC2/create-ec2-q-cli-bootfail.sh
+sh ./agentic-aiops/01_AIOps_EC2/create-ec2-q-cli-bootfail.sh bootfail-01
+```
+
+커맨드 실행 결과 예시입니다. 예시와 결과가 다른 경우 말씀 부탁드립니다.
+
+```
+1. EC2 인스턴스 bootfail-01이 생성되었습니다.
+2. 인스턴스 ID: i-XXXXXXXXXXXX           <============= 출력 결과의 해당 <인스턴스 ID> 부분 
+3. 인스턴스 IP: 555.555.555.555
+4. SSH 키: bootfail-01-key.pem          <============= 생성된 SSH 접근 키  
+5. Amazon Q CLI가 성공적으로 설치되었습니다.
+6. initramfs 파일이 백업되었습니다: /boot/initramfs-$(uname -r).img.bak
+7. 시스템이 재부팅되었습니다.
+```
+
+아래 커맨드를 실행해서 실습에 필요한 두번째 EC2 인스턴스를 구성합니다.
+
+```
+mkdir ~/test1; cd ~/test1
+curl -O https://raw.githubusercontent.com/noenemy/agentic-aiops/refs/heads/main/01_AIOps_EC2/create-ec2-q-cli-cpu50.sh
+sh ./create-ec2-q-cli-cpu50.sh high-cpu-01
+```
+
+커맨드 실행 결과 예시입니다. 예시와 결과가 다른 경우 말씀 부탁드립니다.
+
+```
+설치 확인 중...
+/home/ec2-user/.local/bin/q
+q 1.12.7
+CPU 부하 확인 중...
+CPU 부하 상태:
+CPU 사용률: 54.5%
+
+===== 설치 완료 =====
+인스턴스 이름: high-cpu-01
+인스턴스 ID: i-XXXXXXXXXXXX          <============= 출력 결과의 해당 <인스턴스 ID> 부분 
+인스턴스 IP: 100.27.17.98
+IAM 역할: high-cpu-01-admin-role
+인스턴스 프로파일: high-cpu-01-admin-profile
+SSH 접속 명령어: ssh -i high-cpu-01-key.pem ec2-user@100.27.17.98
+CPU 부하 확인 명령어: ssh -i high-cpu-01-key.pem ec2-user@100.27.17.98 '/home/ec2-user/check_load.sh'
 ```
 
 
