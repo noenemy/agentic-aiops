@@ -63,7 +63,7 @@ aws elasticache create-replication-group --replication-group-id test-valkey-clus
 ```
 mkdir ~/test1; cd ~/test1
 curl -O https://raw.githubusercontent.com/noenemy/agentic-aiops/refs/heads/main/01_AIOps_EC2/create-ec2-q-cli-bootfail.sh
-sh ./agentic-aiops/01_AIOps_EC2/create-ec2-q-cli-bootfail.sh bootfail-01
+sh ./create-ec2-q-cli-bootfail.sh bootfail-01
 ```
 
 커맨드 실행 결과 예시입니다. 예시와 결과가 다른 경우 말씀 부탁드립니다.
