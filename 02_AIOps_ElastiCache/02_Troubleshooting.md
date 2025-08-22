@@ -112,6 +112,7 @@ Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
 - 로컬 환경에 tls 활성화로 valkey 클러스터에 연결하는 python 클라이언트 프로그램 작성을 요청합니다.
 ```
 'ue-east-1' 리전에 있는 'test-valkey-cluster' valkey 클러스터에 tls 암호화 방식으로 연결해서 ping 요청을 보내는 python 프로그램을 작성해줘. endpoint는 직접 조회하고 코드 내부에 하드코딩해줘. /tmp/valkey-client-tls.py에 작성해줘.
+연결 실패가 발생하는 스크립트를 의도적으로 작성한 것이니 수정하지 말고 실행 후에 SSL_connect failed 에러가 발생했으면 스크립트 생성이 완료된 것으로 안내해줘.
 ```
 
 ### 4-2) 분석 진행
@@ -144,7 +145,7 @@ Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
 ### 5-1) 환경 구성
 - 로컬 환경에 긴 시간 cluster의 cpu를 점유하는 long-running command 수행하는 명령 작성을 요청합니다.
 ```
-valkey에서 3초 이상의 EVAL 요청을 수행하는 lua script를 /tmp/long-running-3s.lua 파일에 작성해줘.
+valkey에서 3초 이상의 EVAL 요청을 수행하는 lua script를 /tmp/long-running-3s.lua 파일에 작성해줘. 실행하지 말고 작성이 완료됐으면 작성 완료로 안내해줘.
 ```
 
 - valkey-cli 를 사용하기 위해 valkey 패키지를 설치합니다.
@@ -155,6 +156,7 @@ valkey 패키지를 설치해줘. 다른 패키지를 설치하거나 전체 패
 - script를 실행하여 장애 상황을 재현합니다.
 ```
 valkey-cli -h <endpoint> -p 6379 -c --eval 형식으로 작성한 long-running-3s.lua를 10번 실행해줘. endpoint는 'us-east-1' 리전에 있는 'test-valkey-cluster' valkey 클러스터의 configuration endpoint를 사용해줘.
+slowlog를 보고 3초 이상 한 번이라도 실행 됐으면 더 이상 진행하지 말고 잘 실행됐음을 알려줘. 
 ```
 
 ### 5-2) 분석 진행
@@ -198,6 +200,7 @@ case #2와 유사하지만 노드 failover를 의도적으로 발생시켜 노�
 - 로컬 환경에 긴 시간 cluster의 cpu를 점유하는 long-running command 수행하는 명령 작성을 요청합니다.
 ```
 valkey에서 30초 이상의 EVAL 요청을 수행하는 lua script를 /tmp/long-running.lua 파일에 작성해줘. EVAL요청 내부에는 쓰기 요청이 포함돼있어야해.
+작성이 완료됐으면 실행하지 말고 작성 완료 됐다고 안내해줘.
 ```
 
 - valkey-cli 를 사용하기 위해 valkey 패키지를 설치합니다.
