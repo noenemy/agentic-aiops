@@ -4,17 +4,30 @@
 
 ## 1) Case #1
 
+📢 신규 구성한 'test-valkey-cluster' 클러스터에 연결할 수 없습니다.
+
+Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
+
+### 1-1) 분석 진행
+- 원인 분석 및 조치를 요청합니다.
+```
+'ue-east-1' 리전에 있는 'test-valkey-cluster' valkey 클러스터에 지금 q chat을 실행하고 있는 인스턴스가 연결되지 않아.
+잘못된 설정이 있는지 확인 후 수정해줘.
+```
+
+## 2) Case #2
+
 📢 'test-valkey-cluster' 클러스터에 연결된 Application에서 예기치 않은 connection error 문제가 발생했습니다.
 
 Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
 
-### 1-1) 환경 구성
+### 2-1) 환경 구성
 - primary failover를 수동으로 진행하여 강제 노드 교체를 진행합니다.
 ```
 'ue-east-1' 리전에 있는 'test-valkey-cluster' valkey 클러스터의 1번 샤드에서 프라이머리 장애 조치를 진행해줘.
 ```
 
-### 1-2) 분석 진행
+### 2-2) 분석 진행
 - 기존 primary failover 요청한 내용을 Amazon Q dev CLI가 기억하고 있기에 실제 상황과 유사하게 동작하도록 qchat 세션을 초기화합니다.
 ```
 /quit
@@ -46,19 +59,19 @@ connection error가 발생한 client는 현재 q chat을 실행중인 해당 인
 조사한 내용을 토대로 장애보고서를 작성해야해. 내용을 정리해줘.
 ```
 
-## 2) Case #2
+## 3) Case #3
 
 📢 'test-valkey-cluster' 클러스터에 연결된 Application에서 MOVED 에러가 증가했습니다.
 
 Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
 
-### 2-1) 환경 구성
+### 3-1) 환경 구성
 - 샤드 제거를 통해 클러스터 slot migration이 발생하도록 요청합니다.
 ```
 'ue-east-1' 리전에 있는 'test-valkey-cluster' valkey 클러스터의 2번 샤드를 제거해줘
 ```
 
-### 2-2) 분석 진행
+### 3-2) 분석 진행
 - 기존 요청 내용을 Amazon Q dev CLI가 기억하고 있기에 실제 상황과 유사하게 동작하도록 qchat 세션을 초기화합니다.
 ```
 /quit
@@ -85,7 +98,7 @@ MOVED에러가 증가한 원인이 될만한 작업이 진행됐는지 확인해
 조사한 내용을 토대로 장애보고서를 작성해야해. 내용을 정리해줘.
 ```
 
-## 3) Case #3
+## 4) Case #4
 
 📢 Application에서 'test-valkey-cluster' 클러스터에 연결할 수 없습니다. 설정이 잘못된 것 같은데 어떤 설정이 잘못됐는지 확인이 어렵습니다.
 
@@ -95,13 +108,13 @@ Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
 
 * test-valkey-cluster는 TLS 연결이 비활성화된 상태로, TLS 연결을 시도했을 때 에러가 발생합니다.
 
-### 3-1) 환경 구성
+### 4-1) 환경 구성
 - 로컬 환경에 tls 활성화로 valkey 클러스터에 연결하는 python 클라이언트 프로그램 작성을 요청합니다.
 ```
 'ue-east-1' 리전에 있는 'test-valkey-cluster' valkey 클러스터에 tls 암호화 방식으로 연결해서 ping 요청을 보내는 python 프로그램을 작성해줘. endpoint는 직접 조회하고 코드 내부에 하드코딩해줘. /tmp/valkey-client-tls.py에 작성해줘.
 ```
 
-### 3-2) 분석 진행
+### 4-2) 분석 진행
 - 기존 primary failover 요청한 내용을 Amazon Q dev CLI가 기억하고 있기에 실제 상황과 유사하게 동작하도록 qchat 세션을 초기화합니다.
 ```
 /quit
@@ -122,13 +135,13 @@ q chat
 /tmp/valkey-client-tls.py 을 사용해서 ue-east-1' 리전에 있는 'test-valkey-cluster' valkey 클러스터에 연결하고 있는데, SSL_connect failed: record layer failure 에러가 발생하고 있어. 수정하기 전에 에러가 발생하는 원인을 먼저 분석해줘.
 ```
 
-## 4) Case #4
+## 5) Case #5
 
 📢 'test-valkey-cluster' 클러스터에 연결된 Application에서 command timeout / connection timeout 에러가 발생하고 전체적인 명령의 latency가 증가했습니다.
 
 Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
 
-### 4-1) 환경 구성
+### 5-1) 환경 구성
 - 로컬 환경에 긴 시간 cluster의 cpu를 점유하는 long-running command 수행하는 명령 작성을 요청합니다.
 ```
 valkey에서 3초 이상의 EVAL 요청을 수행하는 lua script를 /tmp/long-running-3s.lua 파일에 작성해줘.
@@ -144,7 +157,7 @@ valkey 패키지를 설치해줘. 다른 패키지를 설치하거나 전체 패
 valkey-cli -h <endpoint> -p 6379 -c --eval 형식으로 작성한 long-running-3s.lua를 10번 실행해줘. endpoint는 'us-east-1' 리전에 있는 'test-valkey-cluster' valkey 클러스터의 configuration endpoint를 사용해줘.
 ```
 
-### 4-2) 분석 진행
+### 5-2) 분석 진행
 - 기존 primary failover 요청한 내용을 Amazon Q dev CLI가 기억하고 있기에 실제 상황과 유사하게 동작하도록 qchat 세션을 초기화합니다.
 ```
 /quit
@@ -173,7 +186,7 @@ cloudwatch 지표와, valkey-cli를 사용해서 클러스터 내부 지표, slo
 조사한 내용을 토대로 장애보고서를 작성해야해. 내용을 정리해줘.
 ```
 
-## 5) Case #5
+## 6) Case #6
 
 📢 'test-valkey-cluster' 클러스터에 연결된 Application에서 command timeout / connection timeout 에러가 발생하고 전체적인 명령의 latency가 증가했습니다.
 
@@ -181,7 +194,7 @@ Amazon Q dev CLI를 통해 해당 원인을 조사합니다.
 
 case #2와 유사하지만 노드 failover를 의도적으로 발생시켜 노드 내부의 slowlog가 없어 근거 자료가 부족한 상태에서도 원인 분석을 진행할 수 있는지 확인합니다.
 
-### 5-1) 환경 구성
+### 6-1) 환경 구성
 - 로컬 환경에 긴 시간 cluster의 cpu를 점유하는 long-running command 수행하는 명령 작성을 요청합니다.
 ```
 valkey에서 30초 이상의 EVAL 요청을 수행하는 lua script를 /tmp/long-running.lua 파일에 작성해줘. EVAL요청 내부에는 쓰기 요청이 포함돼있어야해.
@@ -197,7 +210,7 @@ valkey 패키지를 설치해줘. 다른 패키지를 설치하거나 전체 패
 valkey-cli -h <endpoint> -p 6379 -c --eval 형식으로 작성한 long-running.lua를 실행해줘. endpoint는 'test-valkey-cluster' 클러스터의 configuration endpoint를 사용해줘.
 ```
 
-### 5-2) 분석 진행
+### 6-2) 분석 진행
 - 기존 primary failover 요청한 내용을 Amazon Q dev CLI가 기억하고 있기에 실제 상황과 유사하게 동작하도록 qchat 세션을 초기화합니다.
 ```
 /quit
