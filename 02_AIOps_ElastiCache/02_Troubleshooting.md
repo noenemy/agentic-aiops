@@ -208,6 +208,7 @@ valkey 패키지를 설치해줘. 다른 패키지를 설치하거나 전체 패
 - script를 실행하여 장애 상황을 재현합니다.
 ```
 valkey-cli -h <endpoint> -p 6379 -c --eval 형식으로 작성한 long-running.lua를 실행해줘. endpoint는 'test-valkey-cluster' 클러스터의 configuration endpoint를 사용해줘.
+실행 후에 ElastiCache event를 확인해서 Failover가 발생했으면 실행을 멈추고 Failover 이벤트가 발생했음을 알려줘.
 ```
 
 ### 6-2) 분석 진행
