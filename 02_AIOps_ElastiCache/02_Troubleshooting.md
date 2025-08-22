@@ -136,7 +136,7 @@ valkey에서 3초 이상의 EVAL 요청을 수행하는 lua script를 /tmp/long-
 
 - valkey-cli 를 사용하기 위해 valkey 패키지를 설치합니다.
 ```
-valkey 패키지를 설치해줘.
+valkey 패키지를 설치해줘. 다른 패키지를 설치하거나 전체 패키지를 업데이트하지 말고 dnf install valkey 명령만 실행해줘.
 ```
 
 - script를 실행하여 장애 상황을 재현합니다.
@@ -189,7 +189,7 @@ valkey에서 30초 이상의 EVAL 요청을 수행하는 lua script를 /tmp/long
 
 - valkey-cli 를 사용하기 위해 valkey 패키지를 설치합니다.
 ```
-valkey 패키지를 설치해줘.
+valkey 패키지를 설치해줘. 다른 패키지를 설치하거나 전체 패키지를 업데이트하지 말고 dnf install valkey 명령만 실행해줘.
 ```
 
 - script를 실행하여 장애 상황을 재현합니다.
