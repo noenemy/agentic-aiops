@@ -136,5 +136,11 @@ q chat
 
 실습 지원 엔지니어의 도움에 따라 다음 실습 과정을 진행하시면 됩니다.
 
+7. EC2 실습 가이드를 따라 실습을 진행합니다.
+https://github.com/noenemy/agentic-aiops/blob/main/01_AIOps_EC2/README.md
+
+8. ElastiCache 실습 가이드를 따라 실습을 진행합니다. 
+https://github.com/noenemy/agentic-aiops/blob/main/02_AIOps_ElastiCache/README.md
+
 감사합니다.
 
